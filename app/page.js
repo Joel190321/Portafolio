@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Code, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Coffee, Book, Lightbulb } from 'lucide-react'
+import { Code, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Coffee, Book, Lightbulb,Download } from 'lucide-react'
 import { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
@@ -12,12 +12,28 @@ import { Textarea } from '@/components/ui/textarea'
 export default function Portfolio() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   const { toast } = useToast();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
+
+  const handleDownloadCV = () => {
+    // Replace with the actual URL of your CV file
+    const cvUrl = '/path-to-your-cv.pdf';
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.download = 'Joel_David_Pena_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,9 +68,15 @@ export default function Portfolio() {
     }
   };
   return (
-    <div className="flex bg-background">
+    <div className="flex bg-black">
+       <button 
+        onClick={toggleMenu} 
+        className="lg:hidden fixed top-4 left-4 z-50 bg-primary  rounded-xl text-white">
+        {/* Icono de hamburguesa */}
+        {isMenuOpen ? 'X' : '☰'}
+      </button>
       {/* Menú vertical */}
-      <aside className="w-64 h-screen bg-muted p-6 fixed left-0 top-0 overflow-y-auto">
+      <aside className={`w-64 h-screen bg-muted p-6 fixed left-0 top-0 overflow-y-auto  transition-transform transform ${isMenuOpen ? 'translate-x-0 bg-black z-10' : '-translate-x-full bg-black'} lg:translate-x-0 lg:block`}>
         <nav className="space-y-2">
           <Button variant="ghost" className="w-full justify-start" asChild>
             <a href="#home">
@@ -93,10 +115,18 @@ export default function Portfolio() {
             </a>
           </Button>
         </nav>
+        <Button 
+          variant="outline" 
+          className="w-full mt-4 justify-start"
+          onClick={handleDownloadCV}
+        >
+          <Download className="mr-2 h-4 w-4" />
+          Descargar CV
+        </Button>
       </aside>
 
       {/* Contenido principal */}
-      <main className="flex-1 p-6 ml-64 overflow-auto">
+      <main className="flex-1 p-[10px]  lg:ml-64  overflow-auto">
         {/* Hero Section */}
         <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-r  bg-hero text-white">
           <div className="text-center">
@@ -136,7 +166,7 @@ export default function Portfolio() {
         </section>
 
         {/* Proyectos */}
-        <section id="projects" className="py-20 bg-muted">
+        <section id="projects" className="py-20 ">
           <h2 className="text-4xl font-bold mb-10 text-center">Proyectos</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card className="hover:shadow-lg transition-shadow">
@@ -153,13 +183,13 @@ export default function Portfolio() {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle>Eros Photography</CardTitle>
-                <CardDescription>HTML,CSS,Javascript, API Instagram</CardDescription>
+                <CardTitle>Fitness Web</CardTitle>
+                <CardDescription>Nextjs, Shadcn UI, Tailwind,Lucide React</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="mb-4">Cree una pagina web para un fotografo en la cual puede presentar sus fotos como tambien un cliente agendar una sesion de fotos</p>
+                <p className="mb-4">Pagina ilustrativa para un gimnasio</p>
                 <Button variant="outline" asChild>
-                  <a href="https://elaborate-tulumba-316a46.netlify.app" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+                  <a href="https://fit-life-one.vercel.app" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
                 </Button>
               </CardContent>
             </Card>
@@ -215,7 +245,7 @@ export default function Portfolio() {
         </section>
 
         {/* Skills */}
-        <section id="skills" className="py-20 bg-muted">
+        <section id="skills" className="py-20 ">
           <h2 className="text-4xl font-bold mb-10 text-center">Skills</h2>
           <div className="flex flex-wrap justify-center gap-4">
             <Badge className="text-lg py-2 px-4">
