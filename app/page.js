@@ -3,20 +3,27 @@ import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Code, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Coffee, Book, Lightbulb,Download } from 'lucide-react'
-import { useState } from 'react'
+import { Code, Home, User, Briefcase, Mail, Github, Linkedin, FileText, Coffee, Book, Lightbulb,Download, Sun,Moon } from 'lucide-react'
+import { useState, useEffect} from 'react'
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 import { Textarea } from '@/components/ui/textarea'
+import { useTheme } from 'next-themes'
+
 
 export default function Portfolio() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme(); 
+  const [mounted, setMounted] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const { toast } = useToast();
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -68,16 +75,22 @@ export default function Portfolio() {
     }
   };
   return (
-    <div className="flex bg-black">
+    <div className={`flex ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
        <button 
         onClick={toggleMenu} 
-        className="lg:hidden fixed top-4 left-4 z-50 bg-primary  rounded-xl text-white">
+        className="lg:hidden fixed top-4 left-4 z-50 bg-gray-900 p-2  rounded-xl text-white">
         {/* Icono de hamburguesa */}
         {isMenuOpen ? 'X' : '☰'}
       </button>
+      <button
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        className="fixed top-4 right-4 z-50 bg-primary rounded-xl text-white p-2"
+      >
+        {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
+      </button>
       {/* Menú vertical */}
-      <aside className={`w-64 h-screen bg-muted p-6 fixed left-0 top-0 overflow-y-auto  transition-transform transform ${isMenuOpen ? 'translate-x-0 bg-black z-10' : '-translate-x-full bg-black'} lg:translate-x-0 lg:block`}>
-        <nav className="space-y-2">
+      <aside className={`w-64 h-screen ${theme === 'dark' ? 'bg-gray-900 z-10' : 'bg-gray-100  z-10'} p-6 fixed left-0 top-0 overflow-y-auto transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:block`}>
+        <nav className="space-y-2 ">
           <Button variant="ghost" className="w-full justify-start" asChild>
             <a href="#home">
               <Home className="mr-2 h-4 w-4" />
@@ -128,7 +141,7 @@ export default function Portfolio() {
       {/* Contenido principal */}
       <main className="flex-1 p-[10px]  lg:ml-64  overflow-auto">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-r  bg-hero text-white">
+        <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-r  bg-hero text-black">
           <div className="text-center">
             <h1 className="text-6xl font-bold mb-4">Joel David Peña</h1>
             <p className="text-2xl mb-8">Programando... 👨🏻‍💻</p>
