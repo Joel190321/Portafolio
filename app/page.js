@@ -32,7 +32,7 @@ export default function Portfolio() {
 
   const handleDownloadCV = () => {
     // Replace with the actual URL of your CV file
-    const cvUrl = '/path-to-your-cv.pdf';
+    const cvUrl = 'https://drive.google.com/file/d/1KNlIfhc0YMpCUnENG6fF9p5DuG7zH_uQ/view';
     const link = document.createElement('a');
     link.href = cvUrl;
     link.download = 'Joel_David_Pena_CV.pdf';
@@ -141,7 +141,7 @@ export default function Portfolio() {
       {/* Contenido principal */}
       <main className="flex-1 p-[10px]  lg:ml-64  overflow-auto">
         {/* Hero Section */}
-        <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-r  bg-hero text-black">
+        <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-r  text-black">
           <div className="text-center">
             <h1 className="text-6xl font-bold mb-4">Joel David Peña</h1>
             <p className="text-2xl mb-8">Programando... 👨🏻‍💻</p>
