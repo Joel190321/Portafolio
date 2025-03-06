@@ -8,14 +8,14 @@ import { useState, useEffect} from 'react'
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
 import { Textarea } from '@/components/ui/textarea'
-import { useTheme } from 'next-themes'
+import Proyects from './components/proyects'
+import Certificados from './components/Certificados'
 
 
 export default function Portfolio() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme(); 
   const [mounted, setMounted] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -75,21 +75,16 @@ export default function Portfolio() {
     }
   };
   return (
-    <div className={`flex ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+    <div className={`flex  bg-white text-black`}>
        <button 
         onClick={toggleMenu} 
         className="lg:hidden fixed top-4 left-4 z-50 bg-gray-900 p-2  rounded-xl text-white">
         {/* Icono de hamburguesa */}
         {isMenuOpen ? 'X' : '☰'}
       </button>
-      <button
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className="fixed top-4 right-4 z-50 bg-primary rounded-xl text-white p-2"
-      >
-        {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
-      </button>
+     
       {/* Menú vertical */}
-      <aside className={`w-64 h-screen ${theme === 'dark' ? 'bg-gray-900 z-10' : 'bg-gray-100  z-10'} p-6 fixed left-0 top-0 overflow-y-auto transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:block`}>
+      <aside className={`w-64 h-screen 'bg-gray-100  z-10 p-6 fixed left-0 top-0 overflow-y-auto transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:block`}>
         <nav className="space-y-2 ">
           <Button variant="ghost" className="w-full justify-start" asChild>
             <a href="#home">
@@ -156,7 +151,7 @@ export default function Portfolio() {
           <h2 className="text-4xl font-bold mb-10 text-center">Sobre mí</h2>
           <div className="flex flex-wrap justify-center items-center gap-10">
             <div className="flex-1 min-w-[300px] max-w-[500px]">
-              <Image src="/Joel.webp" alt="Juan Pérez" width={500} height={500} className="rounded-lg shadow-lg" />
+              <Image src="/Joel.webp" alt="Joel david" width={500} height={500} className="rounded-lg shadow-black" />
             </div>
             <div className="flex-1 min-w-[300px] max-w-[500px] space-y-6">
               <p className="text-lg">Soy un desarrollador apasionado por crear soluciones innovadoras y eficientes. Con experiencia en tecnologías front-end y back-end, disfruto enfrentando nuevos desafíos y aprendiendo constantemente.</p>
@@ -179,47 +174,7 @@ export default function Portfolio() {
         </section>
 
         {/* Proyectos */}
-        <section id="projects" className="py-20 ">
-          <h2 className="text-4xl font-bold mb-10 text-center">Proyectos</h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>Camp Area</CardTitle>
-                <CardDescription>TypeScript, Node.js, Tailwind, NextJs</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">Desarrollé una plataforma representativa pensada en una App mobil de Campamentos</p>
-                <Button variant="outline" asChild>
-                  <a href="https://camp-joel190321s-projects.vercel.app" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>Fitness Web</CardTitle>
-                <CardDescription>Nextjs, Shadcn UI, Tailwind,Lucide React</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">Pagina ilustrativa para un gimnasio</p>
-                <Button variant="outline" asChild>
-                  <a href="https://fit-life-one.vercel.app" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>ToDo App</CardTitle>
-                <CardDescription>HTML,JS,Boostrap</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">Un pequeño crud para agregar tareas, permite borrarlas, marcalas como completadas..</p>
-                <Button variant="outline" asChild>
-                  <a href="https://elaborate-tulumba-316a46.netlify.app" target="_blank" rel="noopener noreferrer">Ver proyecto</a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        <Proyects/>
 
         {/* Experiencia */}
         <section id="experience" className="py-20">
@@ -227,7 +182,7 @@ export default function Portfolio() {
           <div className="space-y-12">
           <Card className="hover:shadow-lg transition-shadow">
   <CardHeader>
-    <CardTitle className="text-2xl">Instituto Cincinnatus de Artesanía</CardTitle>
+    <CardTitle className="text-2xl">Cincinnatus Institute of Craftsmanship</CardTitle>
     <CardDescription className="text-lg">Programador Freelance (2022-2024)</CardDescription>
   </CardHeader>
   <CardContent>
@@ -307,75 +262,237 @@ export default function Portfolio() {
 
               Tailwind
             </Badge>
+            <Badge className="text-lg py-2 px-4">
+  <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2c5.525 0 10 4.475 10 10s-4.475 10-10 10S2 17.525 2 12 6.475 2 12 2zm-.956 3.047c-1.293 0-2.058.12-2.928.353-.865.23-1.482.702-1.93 1.415-.447.712-.542 1.63-.542 2.904h3.841v.96H5.44c-1.826 0-3.308 1.596-3.308 3.613 0 1.728 1.332 3.246 3.006 3.52.225.038.454.055.682.055h1.247v-1.493c0-1.094.877-1.98 1.952-1.98h3.057c.932 0 1.68.72 1.68 1.66v1.606h1.193c2.133 0 3.408-1.538 3.408-3.493 0-1.896-1.29-3.572-3.175-3.572h-1.95v-.96h3.754c0-1.219-.09-2.132-.516-2.864-.428-.733-1.09-1.157-1.958-1.385-.87-.229-1.635-.345-2.928-.345h-.047zm-1.07 1.893a.73.73 0 11-.002 1.462.73.73 0 01.002-1.462zm4.12 7.92a.73.73 0 11-.002 1.462.73.73 0 01.002-1.462z"/>
+  </svg>
+  Python
+</Badge>
+<Badge className="text-lg py-2 px-4">
+  <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2a10 10 0 00-7.07 17.07L12 22l7.07-2.93A10 10 0 0012 2zm0 2a8 8 0 015.66 13.66L12 20l-5.66-2.34A8 8 0 0112 4zm0 2a6 6 0 00-4.24 10.24L12 18l4.24-1.76A6 6 0 0012 6zm0 2a4 4 0 00-2.83 6.83L12 14l2.83-1.17A4 4 0 0012 8zm0 2a2 2 0 011.41 3.41L12 12l-1.41-.59A2 2 0 0112 10z"/>
+  </svg>
+  Seguridad en Redes
+</Badge>
+<Badge className="text-lg py-2 px-4">
+  <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 2a8 8 0 017.75 6h-1.5a6.5 6.5 0 10-12.5 0h-1.5A8 8 0 0112 4zm0 14a8 8 0 01-7.75-6h1.5a6.5 6.5 0 0012.5 0h1.5a8 8 0 01-7.75 6zm0-4a2 2 0 110-4 2 2 0 010 4z"/>
+  </svg>
+  Análisis de Vulnerabilidades
+</Badge>
+
 
           </div>
         </section>
+        {/*Certificados */}
+        <Certificados/>
 
         {/* Contacto */}
-        <section id="contact" className="py-20">
-          <h2 className="text-4xl font-bold mb-10 text-center">Contacto</h2>
-          <Card className="max-w-md mx-auto">
-            <CardHeader>
-              <CardTitle>¡Hablemos!</CardTitle>
-              <CardDescription>Estoy siempre abierto a nuevas oportunidades y colaboraciones.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nombre</label>
-                  <Input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1 block w-full"
-                  />
+        <section id="contact" className="py-20 px-4 relative overflow-hidden">
+  {/* Elementos decorativos de fondo */}
+  <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+    <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+
+  <div className="max-w-4xl mx-auto relative">
+    <h2 className="text-4xl font-bold mb-2 text-center">Contacto</h2>
+    <p className="text-center text-muted-foreground mb-10 max-w-md mx-auto">
+      Estoy siempre abierto a nuevas oportunidades y colaboraciones
+    </p>
+
+    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+      <div className="md:flex">
+        {/* Información de contacto */}
+        <div className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 p-8 md:w-1/2 flex flex-col justify-between">
+          <div>
+            <h3 className="text-2xl font-bold mb-4">¡Hablemos!</h3>
+            <p className="mb-6 text-muted-foreground">
+              Me encantaría saber de ti. Puedes contactarme a través de cualquiera de estos medios.
+            </p>
+
+            <div className="space-y-4">
+              <a
+                href="mailto:ype0111@gmail.com"
+                className="flex items-center gap-3 group p-2 -ml-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors duration-200"
+              >
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1 block w-full"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">Mensaje</label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1 block w-full"
-                  ></Textarea>
-                </div>
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-          <div className="mt-8 flex justify-center space-x-4">
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://github.com/joeldavidpena" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github className="h-5 w-5" />
+                <span className="group-hover:underline">ype0111@gmail.com</span>
               </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://linkedin.com/in/joeldavidpena" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </Button>
+
+              <div className="flex items-center gap-3 p-2 -ml-2">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </div>
+                <span>+1 829-332-1311</span>
+              </div>
+
+              <div className="flex items-center gap-3 p-2 -ml-2">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <span>Santiago, Republica Dominicana</span>
+              </div>
+            </div>
           </div>
-        </section>
+
+          <div className="mt-8">
+            <p className="text-sm text-muted-foreground mb-3">Sígueme en redes sociales</p>
+            <div className="flex space-x-3">
+              <a
+                href="https://github.com/Joel190321"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="flex items-center justify-center h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors duration-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/joeldavid-peña/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex items-center justify-center h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors duration-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect width="4" height="12" x="2" y="9" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Mensaje directo */}
+        <div className="p-8 md:w-1/2 flex flex-col justify-center">
+          <h3 className="text-xl font-semibold mb-6">Envíame un mensaje</h3>
+          <p className="mb-6 text-muted-foreground">
+            Puedes contactarme directamente haciendo clic en el botón de abajo para enviarme un correo electrónico.
+          </p>
+
+          <a
+            href="mailto:ype0111@gmail.com"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 font-medium transition-colors duration-200 border border-slate-200 dark:border-slate-700 w-full md:w-auto"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5 text-red-500 dark:text-red-400"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <span>Enviar correo</span>
+          </a>
+
+          <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+            <p className="text-sm text-muted-foreground mb-4">O si prefieres, puedes programar una reunión conmigo:</p>
+            <a
+              href=""
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-slate-900 hover:bg-slate-800 dark:bg-slate-200 dark:hover:bg-slate-100 text-white dark:text-slate-900 font-medium transition-colors duration-200 w-full md:w-auto"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+              >
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                <line x1="16" x2="16" y1="2" y2="6" />
+                <line x1="8" x2="8" y1="2" y2="6" />
+                <line x1="3" x2="21" y1="10" y2="10" />
+                <path d="M8 14h.01" />
+                <path d="M12 14h.01" />
+                <path d="M16 14h.01" />
+                <path d="M8 18h.01" />
+                <path d="M12 18h.01" />
+                <path d="M16 18h.01" />
+              </svg>
+              <span>Agendar una reunión</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
       </main>
     </div>
   )
