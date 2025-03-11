@@ -32,7 +32,7 @@ export default function Hero() {
               className="text-2xl md:text-3xl text-foreground/80 mb-6"
             >
               <span className="relative">
-                Desarrollador Web Frontend
+                Desarrollador Full Stack
                 <motion.span
                   className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"
                   initial={{ scaleX: 0 }}
