@@ -38,7 +38,7 @@ export default function Projects() {
       featured: false,
     },
     {
-      title: "P",
+      title: "Sistema de Detección de Intrusos (IDS)",
       description: "Sitio web de portafolio personal con animaciones y diseño responsivo.",
       image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1741801323/Captura_de_pantalla_2025-03-12_123221_dqlw7v.png",
       tags: ["Python", "Scapy", "Shadcn", "JSON", "SQLite3"],
