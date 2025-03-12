@@ -49,7 +49,6 @@ export default function Home() {
         <Certifications />
         <Contact />
       </main>
-  
     </div>
   )
 }
