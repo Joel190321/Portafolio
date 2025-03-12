@@ -46,7 +46,6 @@ export default function Home() {
         <Experience />
         <Projects />
         <Education />
-        <Certifications />
         <Contact />
       </main>
     </div>
