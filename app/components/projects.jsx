@@ -38,12 +38,12 @@ export default function Projects() {
       featured: false,
     },
     {
-      title: "Portfolio Website",
+      title: "P",
       description: "Sitio web de portafolio personal con animaciones y diseño responsivo.",
-      image: "/placeholder.svg?height=300&width=500",
-      tags: ["Next.js", "Framer Motion", "Tailwind CSS"],
-      demoLink: "a",
-      codeLink: "a",
+      image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1741801323/Captura_de_pantalla_2025-03-12_123221_dqlw7v.png",
+      tags: ["Python", "Scapy", "Shadcn", "JSON", "SQLite3"],
+      demoLink: "No disponible :)",
+      codeLink: "https://github.com/Joel190321/Sistema-de-Detecci-n-de-Intrusos-IDS-/tree/main",
       featured: true,
     },
     {
