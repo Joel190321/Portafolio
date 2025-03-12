@@ -9,7 +9,7 @@ export default function Experience() {
   const experiences = [
     {
       title: "Desarrollador",
-      company: "CinCinnatus",
+      company: "Cincinnatus",
       location: "República Dominicana",
       period: "2022 - 2024",
       description:
