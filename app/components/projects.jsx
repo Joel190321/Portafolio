@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, Eye } from "lucide-react"
+import { Github, Eye,EyeOff  } from "lucide-react"
 
 export default function Projects() {
   const projects = [
@@ -136,19 +136,26 @@ export default function Projects() {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-2" />
-                      Código
-                    </a>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                      <Eye className="h-4 w-4 mr-2" />
-                      Demo
-                    </a>
-                  </Button>
-                </CardFooter>
+  <Button variant="outline" size="sm" asChild>
+    <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
+      <Github className="h-4 w-4 mr-2" />
+      Código
+    </a>
+  </Button>
+  {project.demoLink === "No disponible :)" ? (
+    <div className="flex items-center text-sm text-foreground/70">
+      <EyeOff className="h-4 w-4 mr-2" />
+      Sin demo
+    </div>
+  ) : (
+    <Button size="sm" asChild>
+      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+        <Eye className="h-4 w-4 mr-2" />
+        Demo
+      </a>
+    </Button>
+  )}
+</CardFooter>
               </Card>
             </motion.div>
           ))}
