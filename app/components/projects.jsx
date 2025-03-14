@@ -19,6 +19,16 @@ export default function Projects() {
       featured: true,
     },
     {
+      title: "CryptoBlog",
+      description:
+        "Blog de noticias conforme Crypto obteniendo los datos en tiempo real del mercado",
+      image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1741974902/Captura_de_pantalla_2025-03-14_122215_wsax4e.png",
+      tags: ["Next.js", "Tailwind CSS", "API Coinmarket", "Shadcn", "Typescript"],
+      demoLink: "https://crypto-blog-psi.vercel.app",
+      codeLink: "https://github.com/Joel190321/Crypto-blog",
+      featured: true,
+    },
+    {
       title: "Lic.Eduviges",
       description:
         "Portafolio web Lic.Eduviges",
