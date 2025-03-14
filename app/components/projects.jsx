@@ -62,7 +62,7 @@ export default function Projects() {
       image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1741659677/Captura_de_pantalla_2025-03-10_221800_eygwuz.png",
       tags: ["Python", "Flask", "HTML", "CSS"],
       codeLink: "https://github.com/Joel190321/VulnerabilityScannerPy",
-      demoLink: "No disponible :) ",
+      demoLink: "No disponible :)",
       featured: false,
     },
     {
@@ -76,7 +76,7 @@ export default function Projects() {
     },
   ]
 
-  // Ordenar proyectos para mostrar los destacados primero
+ 
   const sortedProjects = [...projects].sort((a, b) => {
     if (a.featured && !b.featured) return -1
     if (!a.featured && b.featured) return 1
