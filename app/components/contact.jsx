@@ -1,5 +1,7 @@
 "use client"
 
+import  React from "react"
+
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -8,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react"
+import { sendContactEmail } from "@/app/actions/contact"
 
 export default function Contact() {
   const { toast } = useToast()
@@ -24,24 +27,43 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulación de envío de formulario
-    setTimeout(() => {
+    try {
+      
+      const result = await sendContactEmail(formData)
+
+      if (result.success) {
+        toast({
+          title: "Mensaje enviado",
+          description: "Gracias por contactarme. Te responderé lo antes posible.",
+        })
+
+       
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        })
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || "Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.",
+          variant: "destructive",
+        })
+      }
+    } catch (error) {
       toast({
-        title: "Mensaje enviado",
-        description: "Gracias por contactarme. Te responderé lo antes posible.",
+        title: "Error",
+        description: "Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.",
+        variant: "destructive",
       })
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
+    } finally {
       setIsSubmitting(false)
-    }, 1500)
+    }
   }
 
   const contactInfo = [
