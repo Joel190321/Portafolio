@@ -96,13 +96,9 @@ export default function Contact() {
     {
       icon: <Linkedin className="h-5 w-5" />,
       name: "LinkedIn",
-      url: "https://linkedin.com/in/joel-david-peña",
+      url: "https://www.linkedin.com/in/joeldavid-peña/",
     },
-    {
-      icon: <Twitter className="h-5 w-5" />,
-      name: "Twitter",
-      url: "https://twitter.com/David_Mclass",
-    },
+
   ]
 
   return (

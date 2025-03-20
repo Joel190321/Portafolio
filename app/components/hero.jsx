@@ -77,7 +77,7 @@ export default function Hero() {
             >
               {[
                 { icon: <Github className="h-6 w-6" />, href: "https://github.com/Joel190321" },
-                { icon: <Linkedin className="h-6 w-6" />, href: "https://linkedin.com/in/joel-david-peña" },
+                { icon: <Linkedin className="h-6 w-6" />, href: "https://www.linkedin.com/in/joeldavid-peña/" },
                 { icon: <Mail className="h-6 w-6" />, href: "mailto:ype0111@gmail.com" },
               ].map((social, index) => (
                 <motion.a
