@@ -116,7 +116,7 @@ export default function Hero() {
               }}
             >
               <img
-                src="/Joel.webp"
+                src="/comprimida.jpg"
                 alt="Joel David Peña"
                 className="w-full h-full object-cover"
               />
