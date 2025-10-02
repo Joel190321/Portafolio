@@ -19,13 +19,13 @@ export default function Experience() {
         "Optimización de rendimiento en aplicaciones existentes",
         "Implementación de mejores prácticas de desarrollo",
       ],
-      skills: ["React", "Next.js", "Node.js", "JavaScript", "Tailwind CSS"],
+      skills: ["React", "Next.js", "Node.js", "JavaScript", "Tailwind CSS", "Electron","Firebase",],
     },
     {
       title: "Servicio al Cliente",
       company: "VacunateRD",
       location: "República Dominicana",
-      period: "2022 - 2024",
+      period: "2023 - 2024",
       description:
         "Atención y soporte a usuarios de la plataforma nacional de vacunación. Resolución de problemas técnicos y orientación sobre el proceso de vacunación. Manejo de bases de datos y sistemas de registro.",
       achievements: [
