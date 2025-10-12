@@ -21,20 +21,20 @@ export default function Experience() {
       ],
       skills: ["React", "Next.js", "Node.js", "JavaScript", "Tailwind CSS", "Electron","Firebase",],
     },
-    {
-      title: "Servicio al Cliente",
-      company: "VacunateRD",
+     {
+      title: "Desarrollador Full Stack",
+      company: "Adesoft SRL",
       location: "República Dominicana",
-      period: "2023 - 2024",
+      period: "2024 - 2025",
       description:
-        "Atención y soporte a usuarios de la plataforma nacional de vacunación. Resolución de problemas técnicos y orientación sobre el proceso de vacunación. Manejo de bases de datos y sistemas de registro.",
+        "Desarrollo De sistemas de escritorio y apps mobil",
       achievements: [
-        "Atención eficiente a más de 1000 usuarios",
-        "Resolución de problemas técnicos en tiempo real",
-        "Contribución a la mejora de procesos internos",
+        "Desarrollo de app mobil",
+        "Desarollo de sistemas de escritorio",
+        "Mantenimiento, correccion de errores de Servidores",
       ],
-      skills: ["Atención al Cliente", "Resolución de Problemas", "Bases de Datos", "Comunicación Efectiva"],
-    },
+      skills: ["Expo Go", "Electron", "React Native", "Python", "Tkinder", "SQL Server", "React", "Nextjs"],
+    }
   ]
 
   return (
