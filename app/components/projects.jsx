@@ -9,6 +9,16 @@ import { Github, Eye,EyeOff  } from "lucide-react"
 export default function Projects() {
   const projects = [
     {
+      title: "Cinematic",
+      description:
+        "Plataforma para ver reseñas y trailers de peliculas",
+      image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1760326866/Screenshot_2025-10-12_233701_mbeiql.png",
+      tags: ["Next.js", "Tailwind CSS", "TMDB", "Shadcn"],
+      demoLink: "https://cinematic-beta.vercel.app/",
+      codeLink: "https://github.com/Joel190321/Cinematic",
+      featured: true,
+    },
+    {
       title: "Gestor Financiero",
       description:
         "Plataforma de para gestionar tus finanzas. estableciendo metas y objetivos de tu dinero",
