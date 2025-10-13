@@ -8,6 +8,16 @@ import { Github, Eye,EyeOff  } from "lucide-react"
 
 export default function Projects() {
   const projects = [
+     {
+      title: "Global threat monitor",
+      description:
+        "Visualizacion interactiva en 3D de ataques ciberneticos",
+      image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1760329746/Screenshot_2025-10-13_002842_wig9gs.png",
+      tags: ["Next.js", "Tailwind CSS", "Three.js", "TypeScript", "Shadcn"],
+      demoLink: "https://global-threat-monitor.vercel.app/",
+      codeLink: "https://github.com/Joel190321/-GLOBAL-THREAT-MONITOR/tree/main",
+      featured: true,
+    },
     {
       title: "Cinematic",
       description:
