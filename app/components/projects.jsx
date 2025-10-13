@@ -8,6 +8,16 @@ import { Github, Eye,EyeOff  } from "lucide-react"
 
 export default function Projects() {
   const projects = [
+    {
+      title: "FindTeacher",
+      description:
+        "es una plataforma social diseñada específicamente para estudiantes universitarios que desean tomar decisiones informadas al momento de inscribir sus materias. Inspirada en la experiencia de usuario de Instagram, FindTeacher permite a los estudiantes",
+      image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1760379938/Screenshot_2025-10-13_141823_bhmhuo.png",
+      tags: ["Next.js","React", "Tailwind CSS","TypeScript", "Shadcn"],
+      demoLink: "https://find-teacher-five.vercel.app/",
+      codeLink: "https://github.com/Joel190321/FindTeacher",
+      featured: true,
+    },
      {
       title: "Global threat monitor",
       description:
