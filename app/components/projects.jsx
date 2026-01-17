@@ -8,6 +8,16 @@ import { Github, Eye,EyeOff  } from "lucide-react"
 
 export default function Projects() {
   const projects = [
+     {
+      title: "SmartCraft",
+      description:
+        "Plataforma web E-Commerce Servicios",
+      image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1768615924/Captura_de_pantalla_2026-01-16_220739_oywxlm.png",
+      tags: ["Next.js","React", "Tailwind CSS","TypeScript", "Shadcn","Firebase","Azul Payment","Express"],
+      demoLink: "https://smartcraft-wheat.vercel.app/",
+      codeLink: "No disponible proyecto privado :)",
+      featured: false,
+    },
     {
       title: "FindTeacher",
       description:
