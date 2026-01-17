@@ -15,7 +15,7 @@ export default function Projects() {
       image: "https://res.cloudinary.com/dupnpphjj/image/upload/v1768615924/Captura_de_pantalla_2026-01-16_220739_oywxlm.png",
       tags: ["Next.js","React", "Tailwind CSS","TypeScript", "Shadcn","Firebase","Azul Payment","Express"],
       demoLink: "https://smartcraft-wheat.vercel.app/",
-      codeLink: "No disponible proyecto privado :)",
+      codeLink: "https://smartcraft-wheat.vercel.app/",
       featured: false,
     },
     {
